@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,7 +6,8 @@ import {
   TextInput,
   Animated,
   Platform
-} from 'react-native'
+} from "react-native";
+import { appColor } from "../../style/Styles";
 
 class FloatingLabel extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class FloatingLabel extends Component {
     this.state = {
       paddingAnim: new Animated.Value(initialPadding),
       opacityAnim: new Animated.Value(initialOpacity)
-    }
+    };
   }
 
   componentWillReceiveProps(newProps) {
@@ -40,7 +41,15 @@ class FloatingLabel extends Component {
 
   render() {
     return (
-      <Animated.View style={[styles.floatingLabel, { paddingTop: this.state.paddingAnim, opacity: this.state.opacityAnim }]}>
+      <Animated.View
+        style={[
+          styles.floatingLabel,
+          {
+            paddingTop: this.state.paddingAnim,
+            opacity: this.state.opacityAnim
+          }
+        ]}
+      >
         {this.props.children}
       </Animated.View>
     );
@@ -52,7 +61,7 @@ class TextFieldHolder extends Component {
     super(props);
     this.state = {
       marginAnim: new Animated.Value(this.props.withValue ? 10 : 0)
-    }
+    };
   }
 
   componentWillReceiveProps(newProps) {
@@ -81,13 +90,16 @@ class FloatLabelTextField extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.hasOwnProperty('value') && newProps.value !== this.state.text) {
-      this.setState({ text: newProps.value })
+    if (
+      newProps.hasOwnProperty("value") &&
+      newProps.value !== this.state.text
+    ) {
+      this.setState({ text: newProps.value });
     }
   }
 
   leftPadding() {
-    return { width: this.props.leftPadding || 0 }
+    return { width: this.props.leftPadding || 0 };
   }
 
   withBorder() {
@@ -102,21 +114,29 @@ class FloatLabelTextField extends Component {
         <View style={styles.viewContainer}>
           <View style={[styles.paddingView, this.leftPadding()]} />
           <View style={[styles.fieldContainer, this.withBorder()]}>
-            <FloatingLabel visible={this.state.text}>
-              <Text style={[styles.fieldLabel, this.labelStyle()]}>{this.placeholderValue()}</Text>
+            <FloatingLabel
+              visible={this.state.text || this.props.showPlaceHolder}
+            >
+              <Text style={[styles.fieldLabel, this.labelStyle()]}>
+                {this.placeholderValue()}
+              </Text>
             </FloatingLabel>
-            <TextFieldHolder withValue={this.state.text}>
-              <TextInput {...this.props}
-                ref='input'
+            <TextFieldHolder
+              withValue={this.state.text || this.props.showPlaceHolder}
+            >
+              <TextInput
+                {...this.props}
+                ref="input"
                 underlineColorAndroid="transparent"
                 style={[styles.valueText]}
                 defaultValue={this.props.defaultValue}
                 value={this.state.text}
                 maxLength={this.props.maxLength}
+                onSubmitEditing={this.props.onSubmitEditing}
                 onFocus={() => this.setFocus()}
                 onBlur={() => this.unsetFocus()}
-                onChangeText={(value) => this.setText(value)}
-                />
+                onChangeText={value => this.setText(value)}
+              />
             </TextFieldHolder>
           </View>
         </View>
@@ -150,7 +170,7 @@ class FloatLabelTextField extends Component {
     });
     try {
       return this.props.onFocus();
-    } catch (_error) { }
+    } catch (_error) {}
   }
 
   unsetFocus() {
@@ -159,17 +179,17 @@ class FloatLabelTextField extends Component {
     });
     try {
       return this.props.onBlur();
-    } catch (_error) { }
+    } catch (_error) {}
   }
 
   labelStyle() {
-    if (this.state.focused) {
+    if (this.state.focused || this.props.showPlaceHolder) {
       return styles.focused;
     }
   }
 
   placeholderValue() {
-    if (this.state.text) {
+    if (this.state.text || this.props.showPlaceHolder) {
       return this.props.placeholder;
     }
   }
@@ -180,50 +200,50 @@ class FloatLabelTextField extends Component {
     });
     try {
       return this.props.onChangeTextValue(value);
-    } catch (_error) { }
+    } catch (_error) {}
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 45,
-    backgroundColor: 'white',
-    justifyContent: 'center'
+    // height: 170,
+    backgroundColor: "white",
+    justifyContent: "center"
   },
   viewContainer: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   paddingView: {
     width: 15
   },
   floatingLabel: {
-    position: 'absolute',
-    top: 0,
+    position: "absolute",
+    top: -5,
     left: 0
   },
   fieldLabel: {
-    height: 15,
-    fontSize: 10,
-    color: '#B1B1B1'
+    flex: 1,
+    fontSize: 14,
+    color: appColor.colorPrimary
   },
   fieldContainer: {
     flex: 1,
-    justifyContent: 'center',
-    position: 'relative'
+    justifyContent: "center",
+    position: "relative"
   },
   withBorder: {
     borderBottomWidth: 1 / 2,
-    borderColor: '#C8C7CC',
+    borderColor: "#C8C7CC"
   },
   valueText: {
-    height: (Platform.OS == 'ios' ? 20 : 60),
-    fontSize: 16,
-    color: '#111111'
+    height: Platform.OS == "ios" ? 20 : 60,
+    fontSize: 14,
+    color: "#111111"
   },
   focused: {
-    color: "#1482fe"
+    color: appColor.colorPrimary
   }
 });
 

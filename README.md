@@ -10,7 +10,7 @@ Credits for the concept to Matt D. Smith ([@mds](http://www.twitter.com/mds)), a
 </p>
 
 ### Installation
-```npm install react-native-floating-label-text-input --save```
+```npm install MssMaster/react-native-floating-label-text-input --save```
 
 ### Usage example
 

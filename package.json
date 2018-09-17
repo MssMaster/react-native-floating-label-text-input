@@ -1,15 +1,40 @@
 {
-  "name": "react-native-floating-label-text-input",
-  "version": "0.1.5",
+  "_from": "react-native-floating-label-text-input",
+  "_id": "react-native-floating-label-text-input@0.1.5",
+  "_inBundle": false,
+  "_integrity": "sha512-/MCJn5f2s6BaL4KOTEYbDHj81bgXClXO4zXarCceO7jX1VaU1cMzijB8mpSOjnziEhbXjTuVL6hokfqyI+bHXQ==",
+  "_location": "/react-native-floating-label-text-input",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-floating-label-text-input",
+    "name": "react-native-floating-label-text-input",
+    "escapedName": "react-native-floating-label-text-input",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-floating-label-text-input/-/react-native-floating-label-text-input-0.1.5.tgz",
+  "_shasum": "7592171d8ef590b64a821741dabc00c5653e2e8a",
+  "_spec": "react-native-floating-label-text-input",
+  "_where": "/home/acer/Pictures/ExpoProject/magento-mobile-shop",
+  "author": {
+    "name": "Eyal Eizenberg",
+    "email": "eyal.eizenberg@samanage.com",
+    "url": "https://github.com/eyaleizenberg"
+  },
+  "bugs": {
+    "url": "https://github.com/eyaleizenberg/react-native-floating-label-text-input/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "iOS text input with animated floating label",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:eyaleizenberg/react-native-floating-label-text-input.git"
-  },
+  "homepage": "https://github.com/eyaleizenberg/react-native-floating-label-text-input",
   "keywords": [
     "react-native",
     "react-component",
@@ -19,10 +44,15 @@
     "text input",
     "text field"
   ],
-  "author": "Eyal Eizenberg <eyal.eizenberg@samanage.com> (https://github.com/eyaleizenberg)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/eyaleizenberg/react-native-floating-label-text-input/issues"
+  "main": "index.js",
+  "name": "react-native-floating-label-text-input",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eyaleizenberg/react-native-floating-label-text-input.git"
   },
-  "homepage": "https://github.com/eyaleizenberg/react-native-floating-label-text-input"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.5"
 }
